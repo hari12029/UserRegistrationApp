@@ -1,5 +1,5 @@
 
-input[type='submit'], button, [aria-label]{
+input[type='submit'], button, [aria-label], .registerLink{
   cursor: pointer;
   background-color:gray;
   color: white;
@@ -15,10 +15,7 @@ input[type='submit'], button, [aria-label]{
 h2 {
   text-align: center;
   color: #4287f5;
-  margin-top: 10px;
-}
-#spoiler{
-  display: none;
+  margin-top: 40px;
 }
 .toast-top-center {
 top: 12px;
@@ -27,43 +24,13 @@ margin:0 0 0 -150px;
 }
 
 body{
+  width: 80%;
   margin-right: 20%;
   margin-left: 10%;
   margin-top: 5%;
   border-radius: 10px;
-
-}
-body  .table{
-  width: 80%;
 }
 
-table{
-  border-collapse: collapse;
-  table-layout: auto;
-  width: 400px;
-  border:#0000ee;
-}
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-  width: 50%;
-  border-radius: 20%;
-  height: 20%;
-}
-tr:nth-child(even),table.list thead>tr {
-  background-color: #dddddd;
-}
-
-.wrapper {
-  min-height: 50vh;
-  display: flex;
-  align-items: center;
-  background-size: cover; 
-  text-transform: capitalize;
-  margin-left: 40%;
-  
-}
 
 
 .forminput {
@@ -87,21 +54,6 @@ tr:nth-child(even),table.list thead>tr {
   box-sizing:border-box;
 }
 
-/* input[type=radio] {
-  width: 50%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing:border-box;
-  
-} */
-thead{
-  width: 10%;
-   height: -1rem;
-   top: 20px;
-}
 label.validation-error{
   color:   red;
   margin-left: 5px;
