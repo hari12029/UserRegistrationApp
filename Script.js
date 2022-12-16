@@ -59,6 +59,7 @@ return answer;
 
 function SubmitData() {
         let registerData = {};
+        let url='';
         registerData.FirstName = document.getElementById('FirstName').value;
         registerData.LastName = $('#LastName').val();
         registerData.Mobile = document.getElementById('Mobile').value;
@@ -67,11 +68,18 @@ function SubmitData() {
         registerData.stateId = $('#stateList').val();
         registerData.cityId = $('#cityList').val();
         registerData.email = document.getElementById('email').value;
-        registerData.Password = document.getElementById('Password').value;
-        registerData.conformPassword = document.getElementById('conformPassword').value;
+        if($('h2').text()==='Edit Registration'){
+            url = 'https://localhost:44382/api/Register/UpdateRegister';
+            registerData.id = $('#id').val();
+        }
+        else{
+            url = 'https://localhost:44382/api/Register/CreateRegister';
+            registerData.Password = document.getElementById('Password').value;
+            registerData.conformPassword = document.getElementById('conformPassword').value;
+        }
 
      $.ajax({
-        url: 'https://localhost:44382/api/Register/CreateRegister',
+        url: url,
         method: 'post',
         dataType: 'json',
         data: JSON.stringify(registerData),
@@ -82,16 +90,23 @@ function SubmitData() {
                 positionClass: 'toast-top-center',
                 // Redirect 
                 onHidden: function() {
-                    window.location.href = 'Login.html';
+                window.location.href = 'Login.html';
                 }});
-             window.location.href = 'Login.html';
+
+                if($('h2').text()==='Edit Registration'){
+                    window.location.href = 'Home.html';
+                }
+                else{
+                    window.location.href = 'Login.html';
+                }
+             
         },
        fail : function( jqXHR, textStatus ) {
          alert( "Request failed: " + textStatus );
        }
     })
   
-};
+};  
 
 function onFormSubmit() {
     if (validateRegisterForm()) {
@@ -113,9 +128,12 @@ function LoginSubmit() {
         dataType: 'json',
         contentType: 'application/json; charset=utf-8',
         success: function (data) {
-        toastr.success('Logged in Successfully');
         if(data.data === true){
-            window.location.href = 'Home.html';
+            toastr.success('Logged in Successfully');
+            window.location.href = 'users.html';
+        }
+        else{
+            toastr.error('Please Login with correct credentials');
         }
         },
        fail : function( jqXHR, textStatus ) {
@@ -160,15 +178,6 @@ function validateRegisterForm() {
         if (!document.getElementById("emailValidationError").classList.contains("hide"))
             document.getElementById("emailValidationError").classList.add("hide");
     }
-    if (document.getElementById("Password").value == "") {
-        isValid = false;
-        document.getElementById("PasswordValidationError").classList.remove("hide");
-    } 
-    else {
-        isValid = true;
-        if (!document.getElementById("PasswordValidationError").classList.contains("hide"))
-            document.getElementById("PasswordValidationError").classList.add("hide");
-    }
     if (document.getElementById("Mobile").value == "") {
         isValid = false;
         document.getElementById("MobileValidationError").classList.remove("hide");
@@ -197,6 +206,19 @@ function validateRegisterForm() {
         if (!document.getElementById("GenderValidationError").classList.contains("hide"))
             document.getElementById("GenderValidationError").classList.add("hide");
     }
+    if($('h2').text()==='Edit Registration'){
+
+    }
+    else {
+      if (document.getElementById("Password").value == "") {
+        isValid = false;
+        document.getElementById("PasswordValidationError").classList.remove("hide");
+    } 
+    else {
+        isValid = true;
+        if (!document.getElementById("PasswordValidationError").classList.contains("hide"))
+            document.getElementById("PasswordValidationError").classList.add("hide");
+    }
     if(document.getElementById("conformPassword").value !== document.getElementById("Password").value)
     {
         isValid = false;
@@ -206,6 +228,7 @@ function validateRegisterForm() {
         isValid = true;
         if (!document.getElementById("ConfirmPasswordValidationError").classList.contains("hide"))
             document.getElementById("ConfirmPasswordValidationError").classList.add("hide");
+    }
     }
     if(document.getElementById("stateList").value==='0')
     {
