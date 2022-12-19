@@ -115,9 +115,9 @@
     });
 
   </script>
-
+<!--bar chart-->
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<!-- <script type="text/javascript">
+<script type="text/javascript">
   $(document).ready(function() {
       $.ajax({
           url: 'https://localhost:44382/api/Register/GetAllRegister',
@@ -141,12 +141,19 @@
               google.charts.setOnLoadCallback(drawChart);
               function drawChart() {
                 var data = google.visualization.arrayToDataTable([
-                  ['Category', 'Gender Ratio'],
-                  ['Male',     maleCount],
-                  ['Female', femaleCount]
+                  ['Element', 'Gender Ratio', { role: "style" }],
+                  [ 'Male',    maleCount ,'#b87333'],
+                  [ 'Female', femaleCount, "silver"]
                 ]);
+                var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
 
-                var options = {
+      var options = {
         title: "Register users",
         width: 600,
         height: 400,
@@ -163,9 +170,7 @@
       })
   });
 
-</script> -->
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
+</script>
 </head>
   
 <body id="page-top">
