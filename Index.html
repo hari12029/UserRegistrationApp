@@ -13,7 +13,7 @@
   <div class="container">
     <div class="row">
     <div class="card" style="background-color: antiquewhite;">
-    <form onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off" name="myForm"> 
+    <form onsubmit="event.preventDefault();onRegisterFormSubmit();" autocomplete="off" name="myForm"> 
     <div> <span style="float: left;"><a href="Login.html">Back To Login</a></span></div>
 
     <h2>Registration</h2>
@@ -40,7 +40,7 @@
     </div>
   <br>
       <label class="col-md-2" >Gender</label>
-      <span><input type="radio" id="male" name="gender" value="male">Male</span>
+      <span><input type="radio" id="male" name="gender" value="male" checked>Male</span>
       <span><input type="radio" id="female" name="gender" value="female">Female</span>
       <label class="validation-error hide" id="GenderValidationError">Gender Selection is required.</label>
     <br>

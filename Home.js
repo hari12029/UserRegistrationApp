@@ -55,22 +55,9 @@ $(document).on('click','.edit-btn',function(event){
 })
 
 function edititem(id) {
-  //  var id = $('#btndelete').attr('id'),
   localStorage.setItem("id",id);
   window.location.href = 'Edit.html';
-  ///?id='+id;
-  //  $.ajax({
-  //       url: 'https://localhost:44382/api/Register?id='+id,
-  //       type: 'GET',
-  //       success: function(response) {
-  //         if (!$("#tableId").classList.contains("hide"))
-  //         {
-  //           $("#tableId").classList.add("hide");
-  //         }
-  //         $("#tableId").classList.remove("hide");
-
-  //       }
-  //   });
+ 
   }
 
   function updateitem(id){
@@ -83,29 +70,5 @@ function edititem(id) {
       }
   });
   }
-// function deleteitem() {
-//   $("#tableId").on('click','.btndelete',function () {
-//     $(this).closest('tr').remove();
-// });
-// }
-
-// function edititem()
-// $('#tableId').on( 'click', '.btnEdit', function () {
-//   tableId.row( this ).edit( {
-//         buttons: [
-//             { label: 'Cancel', fn: function () { this.close(); } },
-//             'Edit'
-//         ]
-//     } );
-// } );
-
-// $(document).ready(function(){
-//     $("#myInput").on("keyup", function() {
-//       var value = $(this).val().toLowerCase();
-//       $("#tableData tr").filter(function() {
-//         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-//       });
-//     });
-//   });
 
 
